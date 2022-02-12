@@ -6,10 +6,19 @@ namespace CSharpPracticeStuff
     {
         static void Main(string[] args)
         {
-            string name = "Nick Adams";
-            int age = 40;
+            string appName = "Number guessing game";
+            string appVersion = "1.0.0";
+            string appAuthor = "Nick Adams";
 
-            Console.WriteLine("{0} is {1}", name, age);
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+
+            Console.WriteLine("{0}: Version: {2} By: {1}", appName, appAuthor, appVersion);
+            Console.ResetColor();
+
+            Console.WriteLine("test");
+
+
         }
     }
 }
