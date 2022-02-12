@@ -6,21 +6,10 @@ namespace CSharpPracticeStuff
     {
         static void Main(string[] args)
         {
-            string appName = "Number guessing game";
-            string appVersion = "1.0.0";
-            string appAuthor = "Nick Adams";
 
+            GetappInfo();
 
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-
-            Console.WriteLine("{0}: Version: {2} By: {1}", appName, appAuthor, appVersion);
-            Console.ResetColor();
-
-
-            Console.WriteLine("What is your name?");
-            string nameResponse = Console.ReadLine();
-
-            Console.WriteLine("Hello {0}, lets play a game", nameResponse);
+            GreetUser();
 
 
 
@@ -38,9 +27,7 @@ namespace CSharpPracticeStuff
 
                     if (!int.TryParse(playerGuess, out guess))
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Please guess a number");
-                        Console.ResetColor();
+                        PrintColor(ConsoleColor.Red, "Please pick a number");
                         continue;
                     }
 
@@ -48,16 +35,12 @@ namespace CSharpPracticeStuff
 
                     if (guess != correctNumber)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Wrong number, Guess again!!");
-                        Console.ResetColor();
+                        PrintColor(ConsoleColor.DarkRed, "Wrong guess, try again");
                     }
 
                 }
 
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine("You win!!!");
-                Console.ResetColor();
+                PrintColor(ConsoleColor.DarkGreen, "You win!!!");
 
                 Console.WriteLine("Play again[Y/N]?");
                 string answer = Console.ReadLine().ToUpper();
@@ -79,6 +62,34 @@ namespace CSharpPracticeStuff
             }
 
 
+        }
+
+        static void GetappInfo()
+        {
+            string appName = "Number guessing game";
+            string appVersion = "1.0.0";
+            string appAuthor = "Nick Adams";
+
+
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+
+            Console.WriteLine("{0}: Version: {2} By: {1}", appName, appAuthor, appVersion);
+            Console.ResetColor();
+        }
+
+        static void GreetUser()
+        {
+            Console.WriteLine("What is your name?");
+            string nameResponse = Console.ReadLine();
+
+            Console.WriteLine("Hello {0}, lets play a game", nameResponse);
+        }
+
+        static void PrintColor(ConsoleColor color, string message)
+        {
+            Console.ForegroundColor = color;
+            Console.WriteLine(message);
+            Console.ResetColor();
         }
     }
 }
